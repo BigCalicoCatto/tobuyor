@@ -16,145 +16,303 @@ export default function App() {
   const handleBack = () => setPage(page - 1);
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#2a2a2a', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-      <div style={{ maxWidth: '500px', width: '100%', padding: '40px' }}>
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
+      <div className="w-full max-w-2xl">
 
-        {/* PAGE 1: INITIAL INPUT */}
+        {/* PAGE 1 */}
         {page === 1 && (
-          <div>
-            <h1 style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '30px', letterSpacing: '2px' }}>ToBuyOrNot</h1>
-            <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', fontSize: '14px', marginBottom: '8px', color: '#ccc' }}>Your Name (Optional)</label>
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" style={{ width: '100%', padding: '12px', backgroundColor: '#3a3a3a', border: 'none', color: '#fff', borderRadius: '4px', fontSize: '14px', boxSizing: 'border-box' }} />
+          <div className="animate-fadeIn">
+            <h1 className="text-6xl font-black text-white mb-16 tracking-tight">ToBuyOrNot</h1>
+            <div className="space-y-6">
+              <div>
+                <label className="text-sm text-slate-300 mb-2 block">Your Name (Optional)</label>
+                <input 
+                  type="text" 
+                  value={name} 
+                  onChange={(e) => setName(e.target.value)} 
+                  placeholder="Your name" 
+                  className="w-full px-4 py-3 bg-slate-700 text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                />
+              </div>
+              <div>
+                <label className="text-sm text-slate-300 mb-2 block">Item Name (Required)</label>
+                <input 
+                  type="text" 
+                  value={itemName} 
+                  onChange={(e) => setItemName(e.target.value)} 
+                  placeholder="What do you want to buy?" 
+                  className="w-full px-4 py-3 bg-slate-700 text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                />
+              </div>
+              <button 
+                onClick={handleNext} 
+                disabled={!itemName}
+                className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:bg-slate-600 disabled:cursor-not-allowed transition mt-8"
+              >
+                Next
+              </button>
             </div>
-            <div style={{ marginBottom: '30px' }}>
-              <label style={{ display: 'block', fontSize: '14px', marginBottom: '8px', color: '#ccc' }}>Item Name (Required)</label>
-              <input type="text" value={itemName} onChange={(e) => setItemName(e.target.value)} placeholder="What do you want to buy?" style={{ width: '100%', padding: '12px', backgroundColor: '#3a3a3a', border: 'none', color: '#fff', borderRadius: '4px', fontSize: '14px', boxSizing: 'border-box' }} />
-            </div>
-            <button onClick={handleNext} disabled={!itemName} style={{ width: '100%', padding: '12px', backgroundColor: itemName ? '#555' : '#444', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: itemName ? 'pointer' : 'default', fontWeight: '500' }}>Next</button>
           </div>
         )}
 
-        {/* PAGE 2: THE VIBE CHECK */}
+        {/* PAGE 2 */}
         {page === 2 && needWantUnsure !== 'unsure' && (
-          <div>
-            <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '30px' }}>The Vibe Check</h2>
-            <p style={{ fontSize: '16px', marginBottom: '25px', color: '#ccc' }}>Is this a need, a want, or are you not sure?</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '30px' }}>
-              <button onClick={() => { setNeedWantUnsure('need'); handleNext(); }} style={{ textAlign: 'left', padding: '16px', backgroundColor: '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => e.target.style.backgroundColor = '#444'} onMouseLeave={(e) => e.target.style.backgroundColor = '#3a3a3a'}><span style={{ fontWeight: 'bold' }}>Need:</span> I'll face a real problem if I don't have this.</button>
-              <button onClick={() => { setNeedWantUnsure('want'); handleNext(); }} style={{ textAlign: 'left', padding: '16px', backgroundColor: '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => e.target.style.backgroundColor = '#444'} onMouseLeave={(e) => e.target.style.backgroundColor = '#3a3a3a'}><span style={{ fontWeight: 'bold' }}>Want:</span> It's nice to have, but life goes on without it.</button>
-              <button onClick={() => setNeedWantUnsure('unsure')} style={{ textAlign: 'left', padding: '16px', backgroundColor: '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => e.target.style.backgroundColor = '#444'} onMouseLeave={(e) => e.target.style.backgroundColor = '#3a3a3a'}><span style={{ fontWeight: 'bold' }}>Not sure:</span> It might be a need for my lifestyle.</button>
+          <div className="animate-fadeIn">
+            <h2 className="text-4xl font-black text-white mb-12">The Vibe Check</h2>
+            <p className="text-slate-300 text-lg mb-8">Is this a need, a want, or are you not sure?</p>
+            <div className="space-y-4 mb-8">
+              <button 
+                onClick={() => { setNeedWantUnsure('need'); handleNext(); }}
+                className="w-full text-left p-6 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition"
+              >
+                <div className="font-bold text-lg">Need</div>
+                <div className="text-slate-300 text-sm mt-1">I'll face a real problem if I don't have this.</div>
+              </button>
+              <button 
+                onClick={() => { setNeedWantUnsure('want'); handleNext(); }}
+                className="w-full text-left p-6 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition"
+              >
+                <div className="font-bold text-lg">Want</div>
+                <div className="text-slate-300 text-sm mt-1">It's nice to have, but life goes on without it.</div>
+              </button>
+              <button 
+                onClick={() => setNeedWantUnsure('unsure')}
+                className="w-full text-left p-6 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition"
+              >
+                <div className="font-bold text-lg">Not sure</div>
+                <div className="text-slate-300 text-sm mt-1">It might be a need for my lifestyle.</div>
+              </button>
             </div>
-            <button onClick={handleBack} style={{ width: '100%', padding: '12px', backgroundColor: '#444', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer' }}>Back</button>
+            <button 
+              onClick={handleBack}
+              className="w-full py-3 bg-slate-700 text-slate-300 font-semibold rounded-lg hover:bg-slate-600 transition"
+            >
+              Back
+            </button>
           </div>
         )}
 
-        {/* PAGE 2B: UNSURE FOLLOW-UP */}
+        {/* PAGE 2B */}
         {page === 2 && needWantUnsure === 'unsure' && (
-          <div>
-            <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '30px' }}>Let's Dig Deeper</h2>
-            <p style={{ fontSize: '16px', marginBottom: '25px', color: '#ccc' }}>If you don't buy {itemName}, will it seriously disrupt your daily routine, work, health, or emotional well-being?</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '25px' }}>
-              <button onClick={() => { setNeedWantUnsure('need'); handleNext(); }} style={{ width: '100%', padding: '14px', backgroundColor: '#4a4a4a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer', fontWeight: '500' }}>Yes, it's a Need</button>
-              <button onClick={() => { setNeedWantUnsure('want'); handleNext(); }} style={{ width: '100%', padding: '14px', backgroundColor: '#4a4a4a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer', fontWeight: '500' }}>No, it's a Want</button>
+          <div className="animate-fadeIn">
+            <h2 className="text-4xl font-black text-white mb-8">Let's Dig Deeper</h2>
+            <p className="text-slate-300 text-lg mb-12">If you don't buy <span className="font-bold">{itemName}</span>, will it seriously disrupt your daily routine, work, health, or emotional well-being?</p>
+            <div className="space-y-4 mb-8">
+              <button 
+                onClick={() => { setNeedWantUnsure('need'); handleNext(); }}
+                className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition"
+              >
+                Yes, it's a Need
+              </button>
+              <button 
+                onClick={() => { setNeedWantUnsure('want'); handleNext(); }}
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition"
+              >
+                No, it's a Want
+              </button>
             </div>
-            <button onClick={() => setNeedWantUnsure('')} style={{ width: '100%', padding: '12px', backgroundColor: '#444', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer' }}>Back</button>
+            <button 
+              onClick={() => setNeedWantUnsure('')}
+              className="w-full py-3 bg-slate-700 text-slate-300 font-semibold rounded-lg hover:bg-slate-600 transition"
+            >
+              Back
+            </button>
           </div>
         )}
 
-        {/* PAGE 3: THE HOLD-UP */}
+        {/* PAGE 3 */}
         {page === 3 && (
-          <div>
-            <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '30px' }}>The Hold-Up</h2>
-            <p style={{ fontSize: '16px', marginBottom: '25px', color: '#ccc' }}>What's holding you back?</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '30px' }}>
-              <button onClick={() => { setBlocker('money'); handleNext(); }} style={{ textAlign: 'left', padding: '16px', backgroundColor: '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer' }} onMouseEnter={(e) => e.target.style.backgroundColor = '#444'} onMouseLeave={(e) => e.target.style.backgroundColor = '#3a3a3a'}><span style={{ fontWeight: 'bold' }}>Money:</span> I'm worried about the cost.</button>
-              <button onClick={() => { setBlocker('uncertainty'); handleNext(); }} style={{ textAlign: 'left', padding: '16px', backgroundColor: '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer' }} onMouseEnter={(e) => e.target.style.backgroundColor = '#444'} onMouseLeave={(e) => e.target.style.backgroundColor = '#3a3a3a'}><span style={{ fontWeight: 'bold' }}>Uncertainty:</span> I'm not sure I'll use or love it.</button>
-              <button onClick={() => { setBlocker('timing'); handleNext(); }} style={{ textAlign: 'left', padding: '16px', backgroundColor: '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer' }} onMouseEnter={(e) => e.target.style.backgroundColor = '#444'} onMouseLeave={(e) => e.target.style.backgroundColor = '#3a3a3a'}><span style={{ fontWeight: 'bold' }}>Timing:</span> Maybe later—but not right now.</button>
+          <div className="animate-fadeIn">
+            <h2 className="text-4xl font-black text-white mb-12">The Hold-Up</h2>
+            <p className="text-slate-300 text-lg mb-8">What's holding you back?</p>
+            <div className="space-y-4 mb-8">
+              <button 
+                onClick={() => { setBlocker('money'); handleNext(); }}
+                className="w-full text-left p-6 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition"
+              >
+                <div className="font-bold text-lg">Money</div>
+                <div className="text-slate-300 text-sm mt-1">I'm worried about the cost.</div>
+              </button>
+              <button 
+                onClick={() => { setBlocker('uncertainty'); handleNext(); }}
+                className="w-full text-left p-6 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition"
+              >
+                <div className="font-bold text-lg">Uncertainty</div>
+                <div className="text-slate-300 text-sm mt-1">I'm not sure I'll use or love it.</div>
+              </button>
+              <button 
+                onClick={() => { setBlocker('timing'); handleNext(); }}
+                className="w-full text-left p-6 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition"
+              >
+                <div className="font-bold text-lg">Timing</div>
+                <div className="text-slate-300 text-sm mt-1">Maybe later—but not right now.</div>
+              </button>
             </div>
-            <button onClick={handleBack} style={{ width: '100%', padding: '12px', backgroundColor: '#444', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer' }}>Back</button>
+            <button 
+              onClick={handleBack}
+              className="w-full py-3 bg-slate-700 text-slate-300 font-semibold rounded-lg hover:bg-slate-600 transition"
+            >
+              Back
+            </button>
           </div>
         )}
 
-        {/* PAGE 4: SMART CHECK-IN */}
+        {/* PAGE 4 - Money */}
         {page === 4 && blocker === 'money' && (
-          <div>
-            <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '30px' }}>Money Check</h2>
-            <div style={{ marginBottom: '25px' }}>
-              <p style={{ fontSize: '16px', marginBottom: '15px', color: '#ccc' }}>Will this put you in overdraft or debt?</p>
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <button onClick={() => setMoneyDebt('yes')} style={{ flex: 1, padding: '10px', backgroundColor: moneyDebt === 'yes' ? '#555' : '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', cursor: 'pointer' }}>Yes</button>
-                <button onClick={() => setMoneyDebt('no')} style={{ flex: 1, padding: '10px', backgroundColor: moneyDebt === 'no' ? '#555' : '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', cursor: 'pointer' }}>No</button>
+          <div className="animate-fadeIn">
+            <h2 className="text-4xl font-black text-white mb-12">Money Check</h2>
+            <div className="bg-slate-700 p-8 rounded-lg mb-8">
+              <p className="text-slate-300 mb-4">Will this put you in overdraft or debt?</p>
+              <div className="flex gap-4">
+                <button 
+                  onClick={() => setMoneyDebt('yes')}
+                  className={`flex-1 py-2 rounded-lg font-semibold transition ${moneyDebt === 'yes' ? 'bg-red-600 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500'}`}
+                >
+                  Yes
+                </button>
+                <button 
+                  onClick={() => setMoneyDebt('no')}
+                  className={`flex-1 py-2 rounded-lg font-semibold transition ${moneyDebt === 'no' ? 'bg-green-600 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500'}`}
+                >
+                  No
+                </button>
               </div>
             </div>
-            <div style={{ marginBottom: '25px' }}>
-              <p style={{ fontSize: '16px', marginBottom: '10px', color: '#ccc' }}>Do you have a refund window?</p>
-              <input type="text" value={refundDays} onChange={(e) => setRefundDays(e.target.value)} placeholder="e.g., 30 days" style={{ width: '100%', padding: '10px', backgroundColor: '#3a3a3a', border: 'none', color: '#fff', borderRadius: '4px', fontSize: '14px', boxSizing: 'border-box' }} />
+            <div className="bg-slate-700 p-8 rounded-lg mb-8">
+              <p className="text-slate-300 mb-4">Do you have a refund window?</p>
+              <input 
+                type="text" 
+                value={refundDays} 
+                onChange={(e) => setRefundDays(e.target.value)} 
+                placeholder="e.g., 30 days" 
+                className="w-full px-4 py-2 bg-slate-600 text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
             </div>
-            <button onClick={handleNext} style={{ width: '100%', padding: '12px', backgroundColor: '#555', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer', marginBottom: '10px' }}>Continue</button>
-            <button onClick={handleBack} style={{ width: '100%', padding: '12px', backgroundColor: '#444', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer' }}>Back</button>
+            <div className="flex gap-4">
+              <button 
+                onClick={handleNext}
+                className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition"
+              >
+                Continue
+              </button>
+              <button 
+                onClick={handleBack}
+                className="flex-1 py-3 bg-slate-700 text-slate-300 font-semibold rounded-lg hover:bg-slate-600 transition"
+              >
+                Back
+              </button>
+            </div>
           </div>
         )}
 
+        {/* PAGE 4 - Uncertainty */}
         {page === 4 && blocker === 'uncertainty' && (
-          <div>
-            <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '30px' }}>Uncertainty Check</h2>
-            <div style={{ marginBottom: '25px' }}>
-              <p style={{ fontSize: '16px', marginBottom: '15px', color: '#ccc' }}>Have you read recent reviews?</p>
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <button onClick={() => setReviewsRead('yes')} style={{ flex: 1, padding: '10px', backgroundColor: reviewsRead === 'yes' ? '#555' : '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', cursor: 'pointer' }}>Yes</button>
-                <button onClick={() => setReviewsRead('no')} style={{ flex: 1, padding: '10px', backgroundColor: reviewsRead === 'no' ? '#555' : '#3a3a3a', border: 'none', borderRadius: '4px', color: '#fff', cursor: 'pointer' }}>No</button>
+          <div className="animate-fadeIn">
+            <h2 className="text-4xl font-black text-white mb-12">Uncertainty Check</h2>
+            <div className="bg-slate-700 p-8 rounded-lg mb-8">
+              <p className="text-slate-300 mb-4">Have you read recent reviews?</p>
+              <div className="flex gap-4">
+                <button 
+                  onClick={() => setReviewsRead('yes')}
+                  className={`flex-1 py-2 rounded-lg font-semibold transition ${reviewsRead === 'yes' ? 'bg-green-600 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500'}`}
+                >
+                  Yes
+                </button>
+                <button 
+                  onClick={() => setReviewsRead('no')}
+                  className={`flex-1 py-2 rounded-lg font-semibold transition ${reviewsRead === 'no' ? 'bg-red-600 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500'}`}
+                >
+                  No
+                </button>
               </div>
             </div>
-            <div style={{ marginBottom: '25px' }}>
-              <p style={{ fontSize: '16px', marginBottom: '10px', color: '#ccc' }}>Excitement Level (1-10)</p>
-              <input type="range" min="1" max="10" value={excitement} onChange={(e) => setExcitement(e.target.value)} style={{ width: '100%', marginBottom: '10px' }} />
-              <p style={{ textAlign: 'center', fontSize: '18px', fontWeight: 'bold', color: '#ccc' }}>{excitement || '?'}/10</p>
+            <div className="bg-slate-700 p-8 rounded-lg mb-8">
+              <p className="text-slate-300 mb-4">Excitement Level (1-10)</p>
+              <input 
+                type="range" 
+                min="1" 
+                max="10" 
+                value={excitement} 
+                onChange={(e) => setExcitement(e.target.value)} 
+                className="w-full"
+              />
+              <p className="text-center text-3xl font-bold text-blue-400 mt-4">{excitement || '?'}/10</p>
             </div>
-            <button onClick={handleNext} style={{ width: '100%', padding: '12px', backgroundColor: '#555', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer', marginBottom: '10px' }}>Continue</button>
-            <button onClick={handleBack} style={{ width: '100%', padding: '12px', backgroundColor: '#444', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer' }}>Back</button>
+            <div className="flex gap-4">
+              <button 
+                onClick={handleNext}
+                className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition"
+              >
+                Continue
+              </button>
+              <button 
+                onClick={handleBack}
+                className="flex-1 py-3 bg-slate-700 text-slate-300 font-semibold rounded-lg hover:bg-slate-600 transition"
+              >
+                Back
+              </button>
+            </div>
           </div>
         )}
 
+        {/* PAGE 4 - Timing */}
         {page === 4 && blocker === 'timing' && (
-          <div>
-            <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '30px' }}>Timing Check</h2>
-            <p style={{ fontSize: '16px', marginBottom: '30px', color: '#ccc', textAlign: 'center', fontStyle: 'italic' }}>If it's still important in 7 days, it'll still be worth buying.</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '15px' }}>
-              <button onClick={() => { setTimingChoice('wait'); handleNext(); }} style={{ width: '100%', padding: '14px', backgroundColor: '#4a4a4a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer', fontWeight: '500' }}>I'll Wait 7 Days</button>
-              <button onClick={() => { setTimingChoice('now'); handleNext(); }} style={{ width: '100%', padding: '14px', backgroundColor: '#4a4a4a', border: 'none', borderRadius: '4px', color: '#fff', fontSize: '14px', cursor: 'pointer', fontWeight: '500' }}>No, I Want It Now</button>
+          <div className="animate-fadeIn">
+            <h2 className="text-4xl font-black text-white mb-12">Timing Check</h2>
+            <p className="text-slate-300 text-lg text-center mb-12 italic">If it's still important in 7 days, it'll still be worth buying.</p>
+            <div className="space-y-4 mb-8">
+              <button 
+                onClick={() => { setTimingChoice('wait'); handleNext(); }}
+                className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition"
+              >
+                I'll Wait 7 Days
+              </button>
+              <button 
+                onClick={() => { setTimingChoice('now'); handleNext(); }}
+                className="w-full py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition"
+              >
+                No, I Want It Now
+              </button>
             </div>
-            <button onClick={handleBack} style={{ width: '100%', padding: '12px', backgroundColor: '#444', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer' }}>Back</button>
+            <button 
+              onClick={handleBack}
+              className="w-full py-3 bg-slate-700 text-slate-300 font-semibold rounded-lg hover:bg-slate-600 transition"
+            >
+              Back
+            </button>
           </div>
         )}
 
-        {/* PAGE 5: THE VERDICT */}
+        {/* PAGE 5 */}
         {page === 5 && (
-          <div>
-            <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '30px' }}>The Verdict</h2>
-            {needWantUnsure === 'want' && blocker !== 'timing' && (
-              <div style={{ backgroundColor: '#3a3a3a', padding: '20px', borderRadius: '4px', marginBottom: '30px' }}>
-                <p style={{ fontSize: '15px', color: '#fff', marginBottom: '12px' }}>Hey {name || 'friend'}, here's our take on <strong>{itemName}</strong>:</p>
-                <p style={{ fontSize: '15px', color: '#ccc' }}>It's a want—and that's okay! You can return it within {refundDays || 'the window'}. Go for it—if you're still excited tomorrow. Sleep on it.</p>
-              </div>
-            )}
-            {needWantUnsure === 'need' && (
-              <div style={{ backgroundColor: '#3a3a3a', padding: '20px', borderRadius: '4px', marginBottom: '30px' }}>
-                <p style={{ fontSize: '15px', color: '#fff', marginBottom: '12px' }}>Hey {name || 'friend'}, this sounds essential for <strong>{itemName}</strong>.</p>
-                <p style={{ fontSize: '15px', color: '#ccc' }}>Don't delay if it solves a real problem. But can you find a cheaper alternative? Check secondhand or bundles.</p>
-              </div>
-            )}
-            {timingChoice === 'wait' && (
-              <div style={{ backgroundColor: '#3a3a3a', padding: '20px', borderRadius: '4px', marginBottom: '30px' }}>
-                <p style={{ fontSize: '15px', color: '#fff' }}>Smart move! Set a reminder for 7 days. If you still want <strong>{itemName}</strong> then—it's probably worth it.</p>
-              </div>
-            )}
-            {timingChoice === 'now' && (
-              <div style={{ backgroundColor: '#3a3a3a', padding: '20px', borderRadius: '4px', marginBottom: '30px' }}>
-                <p style={{ fontSize: '15px', color: '#fff' }}>You want it now—and that's your call! Good luck with <strong>{itemName}</strong>!</p>
-              </div>
-            )}
-            <button onClick={() => { setPage(1); setName(''); setItemName(''); setNeedWantUnsure(''); setBlocker(''); setMoneyDebt(''); setRefundDays(''); setReviewsRead(''); setExcitement(''); setTimingChoice(''); }} style={{ width: '100%', padding: '12px', backgroundColor: '#555', color: '#999', border: 'none', borderRadius: '4px', fontSize: '14px', cursor: 'pointer', fontWeight: '500' }}>Start Over</button>
+          <div className="animate-fadeIn">
+            <h2 className="text-4xl font-black text-white mb-12">The Verdict</h2>
+            <div className="bg-slate-700 p-8 rounded-lg mb-8">
+              {needWantUnsure === 'want' && blocker !== 'timing' && (
+                <>
+                  <p className="text-white text-lg mb-4">Hey {name || 'friend'}, here's our take on <span className="font-bold">{itemName}</span>:</p>
+                  <p className="text-slate-300">It's a want—and that's okay! You can return it within {refundDays || 'the window'}. Go for it—if you're still excited tomorrow. Sleep on it.</p>
+                </>
+              )}
+              {needWantUnsure === 'need' && (
+                <>
+                  <p className="text-white text-lg mb-4">Hey {name || 'friend'}, this sounds essential for <span className="font-bold">{itemName}</span>.</p>
+                  <p className="text-slate-300">Don't delay if it solves a real problem. But can you find a cheaper alternative? Check secondhand or bundles.</p>
+                </>
+              )}
+              {timingChoice === 'wait' && (
+                <p className="text-slate-300">Smart move! Set a reminder for 7 days. If you still want <span className="font-bold">{itemName}</span> then—it's probably worth it.</p>
+              )}
+              {timingChoice === 'now' && (
+                <p className="text-slate-300">You want it now—and that's your call! Good luck with <span className="font-bold">{itemName}</span>!</p>
+              )}
+            </div>
+            <button 
+              onClick={() => { setPage(1); setName(''); setItemName(''); setNeedWantUnsure(''); setBlocker(''); setMoneyDebt(''); setRefundDays(''); setReviewsRead(''); setExcitement(''); setTimingChoice(''); }}
+              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition"
+            >
+              Start Over
+            </button>
           </div>
         )}
       </div>
