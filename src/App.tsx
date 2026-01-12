@@ -102,13 +102,73 @@ export default function App() {
     marginTop: '15px',
   };
 
-  const optionButtonStyle: React.CSSProperties = {
+  const optionButtonGreen: React.CSSProperties = {
     width: '100%',
     padding: '16px',
     textAlign: 'left',
-    border: '2px solid #ddd',
+    border: '2px solid #4CAF50',
     borderRadius: '12px',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F1F8E9',
+    cursor: 'pointer',
+    marginBottom: '12px',
+    transition: 'all 0.2s ease',
+  };
+
+  const optionButtonBlue: React.CSSProperties = {
+    width: '100%',
+    padding: '16px',
+    textAlign: 'left',
+    border: '2px solid #2196F3',
+    borderRadius: '12px',
+    backgroundColor: '#E3F2FD',
+    cursor: 'pointer',
+    marginBottom: '12px',
+    transition: 'all 0.2s ease',
+  };
+
+  const optionButtonPurple: React.CSSProperties = {
+    width: '100%',
+    padding: '16px',
+    textAlign: 'left',
+    border: '2px solid #9C27B0',
+    borderRadius: '12px',
+    backgroundColor: '#F3E5F5',
+    cursor: 'pointer',
+    marginBottom: '12px',
+    transition: 'all 0.2s ease',
+  };
+
+  const optionButtonRed: React.CSSProperties = {
+    width: '100%',
+    padding: '16px',
+    textAlign: 'left',
+    border: '2px solid #F44336',
+    borderRadius: '12px',
+    backgroundColor: '#FFEBEE',
+    cursor: 'pointer',
+    marginBottom: '12px',
+    transition: 'all 0.2s ease',
+  };
+
+  const optionButtonYellow: React.CSSProperties = {
+    width: '100%',
+    padding: '16px',
+    textAlign: 'left',
+    border: '2px solid #FFC107',
+    borderRadius: '12px',
+    backgroundColor: '#FFFDE7',
+    cursor: 'pointer',
+    marginBottom: '12px',
+    transition: 'all 0.2s ease',
+  };
+
+  const optionButtonOrange: React.CSSProperties = {
+    width: '100%',
+    padding: '16px',
+    textAlign: 'left',
+    border: '2px solid #FF9800',
+    borderRadius: '12px',
+    backgroundColor: '#FFF3E0',
     cursor: 'pointer',
     marginBottom: '12px',
     transition: 'all 0.2s ease',
@@ -163,27 +223,21 @@ export default function App() {
             <div style={{ marginTop: '30px' }}>
               <button 
                 onClick={() => { setNeedWantUnsure('need'); handleNext(); }}
-                style={{...optionButtonStyle, borderColor: '#4CAF50', backgroundColor: '#F1F8E9'}}
-                onMouseOver={(e) => e.target.style.backgroundColor = '#E8F5E9'}
-                onMouseOut={(e) => e.target.style.backgroundColor = '#F1F8E9'}
+                style={optionButtonGreen}
               >
                 <div style={{ fontWeight: '700', color: '#2E7D32' }}>✓ Need</div>
                 <div style={{ fontSize: '12px', color: '#558B2F' }}>I'll face a real problem without it</div>
               </button>
               <button 
                 onClick={() => { setNeedWantUnsure('want'); handleNext(); }}
-                style={{...optionButtonStyle, borderColor: '#2196F3', backgroundColor: '#E3F2FD'}}
-                onMouseOver={(e) => e.target.style.backgroundColor = '#BBDEFB'}
-                onMouseOut={(e) => e.target.style.backgroundColor = '#E3F2FD'}
+                style={optionButtonBlue}
               >
                 <div style={{ fontWeight: '700', color: '#1565C0' }}>✨ Want</div>
                 <div style={{ fontSize: '12px', color: '#0D47A1' }}>Nice to have, but I'll survive</div>
               </button>
               <button 
                 onClick={() => setNeedWantUnsure('unsure')}
-                style={{...optionButtonStyle, borderColor: '#9C27B0', backgroundColor: '#F3E5F5'}}
-                onMouseOver={(e) => e.target.style.backgroundColor = '#E1BEE7'}
-                onMouseOut={(e) => e.target.style.backgroundColor = '#F3E5F5'}
+                style={optionButtonPurple}
               >
                 <div style={{ fontWeight: '700', color: '#6A1B9A' }}>❓ Not Sure</div>
                 <div style={{ fontSize: '12px', color: '#4A148C' }}>Could be a need for my lifestyle</div>
@@ -228,27 +282,21 @@ export default function App() {
             <div style={{ marginTop: '30px' }}>
               <button 
                 onClick={() => { setBlocker('money'); handleNext(); }}
-                style={{...optionButtonStyle, borderColor: '#F44336', backgroundColor: '#FFEBEE'}}
-                onMouseOver={(e) => e.target.style.backgroundColor = '#FFCDD2'}
-                onMouseOut={(e) => e.target.style.backgroundColor = '#FFEBEE'}
+                style={optionButtonRed}
               >
                 <div style={{ fontWeight: '700', color: '#C62828' }}>💸 Money</div>
                 <div style={{ fontSize: '12px', color: '#D32F2F' }}>I'm worried about the cost</div>
               </button>
               <button 
                 onClick={() => { setBlocker('uncertainty'); handleNext(); }}
-                style={{...optionButtonStyle, borderColor: '#FFC107', backgroundColor: '#FFFDE7'}}
-                onMouseOver={(e) => e.target.style.backgroundColor = '#FFF9C4'}
-                onMouseOut={(e) => e.target.style.backgroundColor = '#FFFDE7'}
+                style={optionButtonYellow}
               >
                 <div style={{ fontWeight: '700', color: '#F57F17' }}>⚠️ Uncertainty</div>
                 <div style={{ fontSize: '12px', color: '#F57C00' }}>Will I actually use or love it?</div>
               </button>
               <button 
                 onClick={() => { setBlocker('timing'); handleNext(); }}
-                style={{...optionButtonStyle, borderColor: '#FF9800', backgroundColor: '#FFF3E0'}}
-                onMouseOver={(e) => e.target.style.backgroundColor = '#FFE0B2'}
-                onMouseOut={(e) => e.target.style.backgroundColor = '#FFF3E0'}
+                style={optionButtonOrange}
               >
                 <div style={{ fontWeight: '700', color: '#E65100' }}>⏰ Timing</div>
                 <div style={{ fontSize: '12px', color: '#EF6C00' }}>Maybe later, not right now</div>
