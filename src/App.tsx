@@ -15,7 +15,7 @@ export default function App() {
   const handleNext = () => setPage(page + 1);
   const handleBack = () => setPage(page - 1);
 
-  const containerStyle = {
+  const containerStyle: React.CSSProperties = {
     minHeight: '100vh',
     background: 'linear-gradient(135deg, #FEF3E2 0%, #FEE5D9 50%, #FCE4EC 100%)',
     display: 'flex',
@@ -25,7 +25,7 @@ export default function App() {
     fontFamily: 'system-ui, -apple-system, sans-serif',
   };
 
-  const cardStyle = {
+  const cardStyle: React.CSSProperties = {
     width: '100%',
     maxWidth: '550px',
     backgroundColor: '#FFFFFF',
@@ -34,13 +34,13 @@ export default function App() {
     padding: '40px 30px',
   };
 
-  const emojiStyle = {
+  const emojiStyle: React.CSSProperties = {
     fontSize: '60px',
     textAlign: 'center',
     marginBottom: '20px',
   };
 
-  const titleStyle = {
+  const titleStyle: React.CSSProperties = {
     fontSize: '36px',
     fontWeight: '900',
     color: '#000000',
@@ -48,14 +48,14 @@ export default function App() {
     margin: '0 0 10px 0',
   };
 
-  const subtitleStyle = {
+  const subtitleStyle: React.CSSProperties = {
     fontSize: '14px',
     color: '#666666',
     textAlign: 'center',
     marginBottom: '30px',
   };
 
-  const labelStyle = {
+  const labelStyle: React.CSSProperties = {
     fontSize: '14px',
     fontWeight: '700',
     color: '#1a1a1a',
@@ -63,7 +63,7 @@ export default function App() {
     marginBottom: '10px',
   };
 
-  const inputStyle = {
+  const inputStyle: React.CSSProperties = {
     width: '100%',
     padding: '14px',
     border: '1px solid #ddd',
@@ -76,7 +76,7 @@ export default function App() {
     outline: 'none',
   };
 
-  const primaryButtonStyle = {
+  const primaryButtonStyle: React.CSSProperties = {
     width: '100%',
     padding: '14px',
     background: 'linear-gradient(90deg, #FF9A56 0%, #FF6BB6 100%)',
@@ -90,7 +90,7 @@ export default function App() {
     transition: 'all 0.3s ease',
   };
 
-  const secondaryButtonStyle = {
+  const secondaryButtonStyle: React.CSSProperties = {
     width: '100%',
     padding: '10px',
     background: 'transparent',
@@ -102,7 +102,7 @@ export default function App() {
     marginTop: '15px',
   };
 
-  const optionButtonStyle = {
+  const optionButtonStyle: React.CSSProperties = {
     width: '100%',
     padding: '16px',
     textAlign: 'left',
